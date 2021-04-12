@@ -1,6 +1,6 @@
 import Home from '../Pages/Home'
 import Login from '../Pages/Login'
-
+import Register from '../Pages/Register'
 
 /**
  * 1-this router file for manage route of page.
@@ -15,5 +15,9 @@ export default [
     {
         path:'/login',
         component:Login
+    },
+    {
+        path:'/register',
+        component:Register
     }
 ]
