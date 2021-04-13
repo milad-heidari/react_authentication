@@ -1,6 +1,6 @@
 import React from 'react'
 import './login.css'
-function Login() {
+function LoginComponent() {
     return (
         <div className='container'>
             
@@ -8,4 +8,4 @@ function Login() {
     )
 }
 
-export default Login
+export default LoginComponent
