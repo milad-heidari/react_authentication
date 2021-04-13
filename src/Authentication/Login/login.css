@@ -8,4 +8,7 @@
     /* Curved corners */
     border-bottom-left-radius: 50% 40%;
     border-bottom-right-radius: 50% 40%;
+
+    height:300px;
+    padding: 0;
 }
