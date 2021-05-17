@@ -8,7 +8,7 @@ import Notfound from '../Pages/Notfound'
  * 2-in below array component key means page name:
  *      for example: component:Home means Home.js in ../Pages/Login
  */
-export default [
+const routes = [
     {
         path:'/',
         component:Home
@@ -25,3 +25,5 @@ export default [
         component:Notfound
     }
 ]
+
+export default routes;
