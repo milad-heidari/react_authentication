@@ -4,11 +4,11 @@
  */
 
 import React from 'react'
-import LoginComponent from '../Authentication/Login/LoginComponent'
+import LoginLayout from '../Authentication/Login/LoginLayout'
 function Login() {
     return (
         <div>
-            <LoginComponent/>
+            <LoginLayout/>
         </div>
     )
 }
