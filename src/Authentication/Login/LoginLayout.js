@@ -1,25 +1,28 @@
 import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import "./login.css";
 function LoginLayout() {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().required("Email is required"),
+      password: Yup.string().required("password is required"),
+    }),
+    onSubmit: (values) => {
+      console.log("LOGIN", values);
+    },
+  });
+
   return (
     <div className="container">
       <div className="login-box">
         <p>Sign in</p>
-        <form className="login-form">
-          {/* <label htmlFor="firstName"> first name</label><br />
-                <input type="input" id="firstName" name="firstName" />
-                <br/>
-                <label htmlFor="lastName"> last name</label><br />
-                <input type="input" id="lastName" name="lastName" /> */}
-          <br />
+        <form onSubmit={formik.handleSubmit} className="login-form">
           <div>
-            {/* <div className="login-form__label_container">
-              <label className="login-form__label" htmlFor="email">
-                email:
-              </label>
-              <br />
-            </div> */}
-
             <div className="login-form__input_container">
               <input
                 className="login-form__input"
@@ -27,18 +30,19 @@ function LoginLayout() {
                 id="email"
                 name="email"
                 placeholder="Email"
+                {...formik.getFieldProps("email")}
               />
+              {formik.touched.email && formik.errors.email ? (
+                <div className="login-form__input_error_message_container">
+                  <div className="login-form__input_error_message">
+                    {formik.errors.email}
+                  </div>
+                </div>
+              ) : null}
             </div>
           </div>
           <br />
           <div>
-            {/* <div className="login-form__label_container">
-              <label className="login-form__label" htmlFor="password">
-                password:
-              </label>
-              <br />
-            </div> */}
-
             <div className="login-form__input_container">
               <input
                 className="login-form__input"
@@ -46,7 +50,15 @@ function LoginLayout() {
                 id="password"
                 name="password"
                 placeholder="Password"
+                {...formik.getFieldProps("password")}
               />
+              {formik.touched.password && formik.errors.password ? (
+                <div className="login-form__input_error_message_container">
+                  <div className="login-form__input_error_message">
+                    {formik.errors.password}
+                  </div>
+                </div>
+              ) : null}
             </div>
           </div>
 
@@ -54,10 +66,14 @@ function LoginLayout() {
             <button className="login-form__login_button">Login</button>
           </div>
         </form>
-          <div className="resetPasswordAndRegisterContainer">
-            <a className="resetPassword_Link" href='/'>Reset password</a>
-            <a className="register_Link" href="/register">Register</a>
-          </div>
+        <div className="resetPasswordAndRegisterContainer">
+          <a className="resetPassword_Link" href="/">
+            Reset password
+          </a>
+          <a className="register_Link" href="/register">
+            Register
+          </a>
+        </div>
       </div>
     </div>
   );
