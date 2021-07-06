@@ -2,22 +2,23 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./register.css";
+import { Link } from "react-router-dom";
 
 function RegisterLayout() {
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
+      // firstName: "",
+      // lastName: "",
       email: "",
       password: "",
     },
     validationSchema: Yup.object({
-      firstName: Yup.string().required("required"),
-      lastName: Yup.string().required("required"),
+      // firstName: Yup.string().required("required"),
+      // lastName: Yup.string().required("required"),
       email: Yup.string().email("invalid email address").required("required"),
       password: Yup.string()
         .required("required")
-        .min(8, "Password is too short - should be 8 chars minimum.")
+        .min(6, "Password is too short - should be 8 chars minimum.")
         .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
     }),
     onSubmit: (values) => {
@@ -30,7 +31,7 @@ function RegisterLayout() {
       <div className="register-box">
         <p>Register</p>
         <form onSubmit={formik.handleSubmit} className="register-form">
-          <div>
+          {/* <div>
             <div className="register-form__input_container">
               <input
                 className="register-form__input"
@@ -47,9 +48,9 @@ function RegisterLayout() {
                 </div>
               ) : null}
             </div>
-          </div>
-          <br />
-          <div>
+          </div> */}
+          {/* <br /> */}
+          {/* <div>
             <div className="register-form__input_container">
               <input
                 className="register-form__input"
@@ -66,9 +67,9 @@ function RegisterLayout() {
                 </div>
               ) : null}
             </div>
-          </div>
+          </div> */}
 
-          <br />
+          {/* <br /> */}
           <div>
             <div className="register-form__input_container">
               <input
@@ -121,9 +122,9 @@ function RegisterLayout() {
           </div>
         </form>
         <div className="loginLinkContainer">
-          <a className="login_Link" href="/login">
+          <Link className="login_Link" to="/login">
             Log in
-          </a>
+          </Link>
         </div>
       </div>
     </div>

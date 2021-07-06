@@ -2,6 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./login.css";
+import { Link } from "react-router-dom";
 function LoginLayout() {
   const formik = useFormik({
     initialValues: {
@@ -67,12 +68,12 @@ function LoginLayout() {
           </div>
         </form>
         <div className="resetPasswordAndRegisterContainer">
-          <a className="resetPassword_Link" href="/">
+          {/* <a className="resetPassword_Link" href="/">
             Reset password
-          </a>
-          <a className="register_Link" href="/register">
+          </a> */}
+          <Link className="register_Link" to="/register">
             Register
-          </a>
+          </Link>
         </div>
       </div>
     </div>
