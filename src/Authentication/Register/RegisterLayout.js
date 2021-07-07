@@ -3,7 +3,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./register.css";
 import { Link } from "react-router-dom";
-import PComponent from '../../Components/Partials/PComponent'
+import P from '../../Components/Partials/P'
+import Form from "../../Components/Partials/Form";
+import Input from "../../Components/Partials/Input";
 
 function RegisterLayout() {
   const formik = useFormik({
@@ -31,55 +33,16 @@ function RegisterLayout() {
     <div className="container">
       <div className="register-box">
         {/* <p>Register</p> */}
-        <PComponent classes='' text='Register'/>
-        <form onSubmit={formik.handleSubmit} className="register-form">
-          {/* <div>
-            <div className="register-form__input_container">
-              <input
-                className="register-form__input"
-                type="input"
-                id="firstName"
-                placeholder="First Name"
-                {...formik.getFieldProps("firstName")}
-              />
-              {formik.touched.firstName && formik.errors.firstName ? (
-                <div className="register-form__input_error_message_container">
-                  <div className="register-form__input_error_message">
-                    {formik.errors.firstName}
-                  </div>
-                </div>
-              ) : null}
-            </div>
-          </div> */}
-          {/* <br /> */}
-          {/* <div>
-            <div className="register-form__input_container">
-              <input
-                className="register-form__input"
-                type="input"
-                id="lastName"
-                placeholder="Last Name"
-                {...formik.getFieldProps("lastName")}
-              />
-              {formik.touched.lastName && formik.errors.lastName ? (
-                <div className="register-form__input_error_message_container">
-                  <div className="register-form__input_error_message">
-                    {formik.errors.lastName}
-                  </div>
-                </div>
-              ) : null}
-            </div>
-          </div> */}
-
-          {/* <br /> */}
+        <P classes='' text='Register' />
+        <Form onSubmit={formik.handleSubmit} classes="register-form">
           <div>
             <div className="register-form__input_container">
-              <input
-                className="register-form__input"
+              <Input
+                classes="register-form__input"
                 type="email"
                 id="email"
                 placeholder="Email"
-                {...formik.getFieldProps("email")}
+                formikGetFieldProps={formik.getFieldProps("email")}
               />
               {formik.touched.email && formik.errors.email ? (
                 <div className="register-form__input_error_message_container">
@@ -90,22 +53,15 @@ function RegisterLayout() {
               ) : null}
             </div>
           </div>
-          <br />
+          <br/>
           <div>
-            {/* <div className="register-form__label_container">
-                <label className="register-form__label" htmlFor="password">
-                  password:
-                </label>
-                <br />
-              </div> */}
-
             <div className="register-form__input_container">
-              <input
-                className="register-form__input"
+              <Input
+                classes="register-form__input"
                 type="password"
                 id="password"
                 placeholder="Password"
-                {...formik.getFieldProps("password")}
+                formikGetFieldProps={formik.getFieldProps("password")}
               />
               {formik.touched.password && formik.errors.password ? (
                 <div className="register-form__input_error_message_container">
@@ -116,13 +72,12 @@ function RegisterLayout() {
               ) : null}
             </div>
           </div>
-
           <div className="register-form__register_button_container">
             <button type="submit" className="register-form__register_button">
               Register
             </button>
           </div>
-        </form>
+        </Form>
         <div className="loginLinkContainer">
           <Link className="login_Link" to="/login">
             Log in
