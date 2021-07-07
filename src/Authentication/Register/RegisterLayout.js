@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import P from '../../Components/Partials/P'
 import Form from "../../Components/Partials/Form";
 import Input from "../../Components/Partials/Input";
+import Button from "../../Components/Partials/Button";
 
 function RegisterLayout() {
   const formik = useFormik({
@@ -73,9 +74,11 @@ function RegisterLayout() {
             </div>
           </div>
           <div className="register-form__register_button_container">
-            <button type="submit" className="register-form__register_button">
-              Register
-            </button>
+            <Button 
+              classes="register-form__register_button"
+              type="submit"
+              title="Register"
+              />
           </div>
         </Form>
         <div className="loginLinkContainer">
