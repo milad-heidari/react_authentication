@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./register.css";
 import { Link } from "react-router-dom";
+import PComponent from '../../Components/Partials/PComponent'
 
 function RegisterLayout() {
   const formik = useFormik({
@@ -29,7 +30,8 @@ function RegisterLayout() {
   return (
     <div className="container">
       <div className="register-box">
-        <p>Register</p>
+        {/* <p>Register</p> */}
+        <PComponent classes='' text='Register'/>
         <form onSubmit={formik.handleSubmit} className="register-form">
           {/* <div>
             <div className="register-form__input_container">
