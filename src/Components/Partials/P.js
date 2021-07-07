@@ -1,9 +1,9 @@
 import React from 'react'
 
-function PComponent({text,classes}) {
+function P({text,classes}) {
     return (
         <p className={classes}>{text}</p>
     )
 }
 
-export default PComponent
+export default P
