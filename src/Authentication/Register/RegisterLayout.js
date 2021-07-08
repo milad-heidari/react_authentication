@@ -1,14 +1,17 @@
 import React from "react";
+import {connect} from 'react-redux'
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./register.css";
 import { Link } from "react-router-dom";
+import authActions from '../../Store/Authentication/authActions'
 import P from '../../Components/Partials/P'
 import Form from "../../Components/Partials/Form";
 import Input from "../../Components/Partials/Input";
 import Button from "../../Components/Partials/Button";
 
-function RegisterLayout() {
+function RegisterLayout({userRegisterRequest}) {
+  // let history = useHistory()
   const formik = useFormik({
     initialValues: {
       // firstName: "",
@@ -26,7 +29,10 @@ function RegisterLayout() {
         .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
     }),
     onSubmit: (values) => {
-      console.log("user data:", values);
+      // console.log("user data:", values);
+      userRegisterRequest({...values})
+      
+      // history.push('/login')
     },
   });
 
@@ -91,4 +97,21 @@ function RegisterLayout() {
   );
 }
 
-export default RegisterLayout;
+const mapState = (state)=>{
+  return{
+
+  }
+}
+
+const mapDispatch = (dispatch)=>{
+  return {
+    userRegisterRequest:(payload)=>{
+      dispatch({
+        type:authActions.AUTH_REGISTER_USER,
+        payload
+      })
+    }
+  }
+}
+
+export default connect(mapState,mapDispatch)(RegisterLayout);

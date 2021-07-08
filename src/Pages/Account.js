@@ -1,25 +1,27 @@
 import React,{useEffect} from 'react'
 import {connect} from 'react-redux'
 import {Redirect,useHistory} from 'react-router-dom'
-import RegisterLayout from '../Authentication/Register/RegisterLayout'
-function Register({token}) {
-    console.log('token',token)
+
+function Account({token}) {
+
     let history = useHistory()
+
     useEffect(() => {
-        history.push('/register')
+        history.push('/account')
     }, [token])
+
 
     const CheckPermission = ()=>{
         if (token) {   
-            return <Redirect to={'/account'}/>
+            return <div>Account page</div>
         }else {
-            return <div><RegisterLayout/></div>
+            return <Redirect to={'/register'}/>
         }
         
     }
 
     return (
-       <CheckPermission/>
+        <CheckPermission/>
     )
 }
 
@@ -29,4 +31,4 @@ const mapState = (state)=>{
     }
 }
 
-export default connect(mapState)(Register)
+export default connect(mapState)(Account)

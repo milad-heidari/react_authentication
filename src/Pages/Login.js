@@ -3,14 +3,35 @@
  * so for render login component import from '../Authentication/Login/Login.js'
  */
 
-import React from 'react'
+ import React,{useEffect} from 'react'
+ import {connect} from 'react-redux'
+ import {Redirect,useHistory} from 'react-router-dom'
 import LoginLayout from '../Authentication/Login/LoginLayout'
-function Login() {
+function Login({token}) {
+
+    let history = useHistory()
+    useEffect(() => {
+        history.push('/login')
+    }, [token])
+
+    const CheckPermission = ()=>{
+        if (token) {   
+            return <Redirect to={'/account'}/>
+        }else {
+            return  <div><LoginLayout/></div>
+        }
+        
+    }
+
     return (
-        <div>
-            <LoginLayout/>
-        </div>
+        <CheckPermission/>
     )
 }
 
-export default Login
+const mapState = (state)=>{
+    return {
+        token:state.authReducers.userToken
+    }
+}
+
+export default connect(mapState)(Login)
