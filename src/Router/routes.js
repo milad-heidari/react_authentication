@@ -1,6 +1,6 @@
+import Register from '../Pages/Register'
 import Home from '../Pages/Home'
 import Login from '../Pages/Login'
-import Register from '../Pages/Register'
 import Notfound from '../Pages/Notfound'
 import Account from '../Pages/Account'
 
@@ -15,12 +15,12 @@ const routes = [
         component:Home
     },
     {
-        path:'/login',
-        component:Login
-    },
-    {
         path:'/register',
         component:Register
+    },
+    {
+        path:'/login',
+        component:Login
     },
     {
         path:'/account',
